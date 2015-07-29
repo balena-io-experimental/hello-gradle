@@ -6,7 +6,7 @@ RUN echo 'deb http://archive.raspberrypi.org/debian/ wheezy main' >> /etc/apt/so
     apt-key add /key/raspberrypi.gpg.key
 
 RUN apt-get update && \
-    apt-get -y install oracle-java8-jdk wget unzip && \
+    apt-get -y install oracle-java8-jdk wget unzip ca-certificates && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV GRADLE_VERSION 2.5
