@@ -10,11 +10,10 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV GRADLE_VERSION 2.5
-RUN mkdir /usr/src/gradle && \
-    wget "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" && \
-    unzip "gradle-${GRADLE_VERSION}-bin.zip -d /usr/src/" && \
+RUN wget "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" && \
+    unzip "gradle-${GRADLE_VERSION}-bin.zip" -d /usr/src/ && \
     rm "gradle-${GRADLE_VERSION}-bin.zip" && \
-    ln -s "/usr/src/gradle-${GRADLE_VERSION}/bin/gradle" "/usr/bin/gradle"
+    ln -s "/usr/src/gradle-${GRADLE_VERSION}/bin/gradle" /usr/bin/gradle
 
 COPY . /usr/src/app
 
